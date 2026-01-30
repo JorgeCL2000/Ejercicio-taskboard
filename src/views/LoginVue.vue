@@ -26,14 +26,37 @@ const login = async () => {
 }
 </script>
 <template>
-  <div class="datos">
-    <input type="email" v-model="email" placeholder="Email" />
-    <input type="password" v-model="password" placeholder="Contraseña" />
-  </div>
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-center mb-6">Iniciar sesión</h2>
 
-  <button @click="login">Iniciar sesion</button>
-  <button><router-link to="/register" id="btnReg">Registrarse</router-link></button>
+      <div class="flex flex-col gap-4 mb-6">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="Email"
+          class="px-4 py-2 border rounded-md"
+        />
+
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Contraseña"
+          class="px-4 py-2 border rounded-md"
+        />
+      </div>
+
+      <button @click="login" class="w-full bg-green-600 text-black py-2 rounded-md">
+        Iniciar sesión
+      </button>
+
+      <p class="text-center text-sm mt-4">
+        <router-link to="/register" class="text-black-600"> Regístrate </router-link>
+      </p>
+    </div>
+  </div>
 </template>
+
 <style scoped>
 #btnReg {
   text-decoration: none;
