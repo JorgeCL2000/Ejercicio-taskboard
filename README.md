@@ -28,8 +28,7 @@ Clonar el repositorio
 
 Instalar y hacer setup del proyecto con sus dependencias, los pasos a seguir están a partir del ## Project Setup
 
-
-LINK A VERCEL : 
+LINK A VERCEL : ejercicio-taskboard.vercel.app
 
 ## Project Setup
 
