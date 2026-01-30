@@ -3,6 +3,7 @@ import LoginVue from '@/views/LoginVue.vue'
 import RegisterVue from '@/views/RegisterVue.vue'
 import TareasVue from '@/views/TareasVue.vue'
 import { getCurrentUser } from '@/firebase'
+import WorkspaceVue from '@/views/WorkspaceVue.vue'
 const routes = [
   {
     path: '/tareas',
@@ -20,6 +21,10 @@ const routes = [
   {
     path: '/',
     redirect: '/tareas',
+  },
+  {
+    path: '/workspace',
+    component: WorkspaceVue,
   },
 ]
 

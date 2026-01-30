@@ -77,29 +77,45 @@ const agregarTarea = async (tarea) => {
 </script>
 
 <template>
-  <button @click="logout">Cerrar Sesión</button>
+  <div class="min-h-screen bg-gray-100 p-6">
+    <button @click="logout" class="bg-red-600 text-white px-4 py-2 rounded-md">
+      Cerrar Sesión
+    </button>
+    <router-link to="/workspace" class="bg-blue-600 text-white px-4 py-2 m-3 rounded-md">
+      Workspace
+    </router-link>
+    <select v-model="opciones" class="px-4 py-2 border rounded-md focus:outline-none">
+      <option value="todas">Todas</option>
+      <option value="completadas">Completadas</option>
+      <option value="pendientes">Pendientes</option>
+    </select>
 
-  <select v-model="opciones">
-    <option value="todas">Todas</option>
-    <option value="completadas">Completadas</option>
-    <option value="pendientes">Pendientes</option>
-  </select>
+    <p v-if="loading">CARGANDO TAREAS...</p>
 
-  <p v-if="loading">CARGANDO TAREAS...</p>
+    <p v-else-if="!tareasArr.length">No hay tareas disponibles</p>
 
-  <p v-else-if="!tareasArr.length">No hay tareas disponibles</p>
+    <div v-else>
+      <div
+        v-for="tarea in tareasArr"
+        :key="tarea.id"
+        class="bg-white p-4 rounded-lg shadow-sm m-3 flex justify-between items-center"
+      >
+        <p><b>Tarea:</b> {{ tarea.todo }}</p>
 
-  <div v-else>
-    <div v-for="tarea in tareasArr" :key="tarea.id">
-      <p><b>Tarea:</b> {{ tarea.todo }}</p>
+        <p v-if="tarea.completed" class="text-green-600 text-sm">Finalizada</p>
 
-      <p v-if="tarea.completed">Finalizada</p>
+        <button
+          v-else-if="!tarea.assignedTo"
+          @click="agregarTarea(tarea)"
+          class="bg-blue-600 text-white px-4 py-1.5 rounded-md"
+        >
+          Agregar
+        </button>
 
-      <button v-else-if="!tarea.assignedTo" @click="agregarTarea(tarea)">Agregar</button>
+        <p v-else class="text-yellow-600 text-sm">Asignada</p>
 
-      <p v-else>Asignada</p>
-
-      <hr />
+        <hr />
+      </div>
     </div>
   </div>
 </template>
