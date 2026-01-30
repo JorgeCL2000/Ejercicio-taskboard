@@ -19,7 +19,7 @@ const login = async () => {
       noLogin.value = 'Debe verificarse para poder entrar'
       return
     }
-    //router.push('') <-- nos llevará a tasks
+    router.push('/tareas')
   } catch (error) {
     alert(error)
   }
@@ -32,5 +32,11 @@ const login = async () => {
   </div>
 
   <button @click="login">Iniciar sesion</button>
+  <button><router-link to="/register" id="btnReg">Registrarse</router-link></button>
 </template>
-<style scoped></style>
+<style scoped>
+#btnReg {
+  text-decoration: none;
+  color: black;
+}
+</style>
