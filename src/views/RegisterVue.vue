@@ -29,10 +29,35 @@ const registrar = async () => {
 }
 </script>
 <template>
-  <div>
-    <input type="email" v-model="email" placeholder="Email" />
-    <input type="password" v-model="password" placeholder="Contraseña" />
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-center mb-6">Crear cuenta</h2>
+
+      <div class="flex flex-col gap-4 mb-6">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="Email"
+          class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Contraseña"
+          class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <button @click="registrar" class="w-full bg-green-600 text-black py-2 rounded-md">
+        Crear cuenta
+      </button>
+
+      <p class="text-center text-sm mt-4">
+        <router-link to="/login" class="text-black-600"> Inicia sesión </router-link>
+      </p>
+    </div>
   </div>
-  <div><button @click="registrar">Crear cuenta</button></div>
 </template>
+
 <style scoped></style>
